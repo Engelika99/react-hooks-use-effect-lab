@@ -18,19 +18,22 @@ function App() {
       setScore((score) => score + 1);
     }
   }
+  function handleResetQuestion() {
+    setQuestions(quiz);
+    setCurrentQuestion(1);
+    setScore(0);
+  }
 
   return (
     <main>
       <section>
         {currentQuestion ? (
-          <Question
-            question={currentQuestion}
-            onAnswered={handleQuestionAnswered}
-          />
+          <Question question={currentQuestion} onAnswered={handleQuestionAnswered} />
         ) : (
           <>
             <h1>Game Over</h1>
             <h2>Total Correct: {score}</h2>
+            <button onClick={handleResetQuestion}>Restart Quiz</button>
           </>
         )}
       </section>
